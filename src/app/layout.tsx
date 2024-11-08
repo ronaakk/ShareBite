@@ -4,7 +4,7 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export const metadata: Metadata = {
   title: "ShareBite",
-  description: "Preventing Food Wastage",
+  description: "Help your local community!",
 };
 
 export default function RootLayout({

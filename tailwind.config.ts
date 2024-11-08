@@ -8,9 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        satoshi: ['Satoshi', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'primary-green': '#4ade80',
+        'light-green': '#86efac'
       },
     },
   },
