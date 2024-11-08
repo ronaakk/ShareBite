@@ -15,9 +15,9 @@ export default function Home() {
       <>
         <div className="container flex flex-col mx-auto">
         <div className="relative flex flex-wrap items-center justify-between w-full bg-white group py-7 shrink-0">
-          <div>
+          {/* <div>
 
-          </div>
+          </div> */}
           <div className="items-center justify-between hidden gap-12 text-black md:flex">
             <a className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Product</a>
             <a className="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Features</a>
