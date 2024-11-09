@@ -3,14 +3,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const SelectRolePage = () => {
+  const { user, isLoading } = useUser();
   const router = useRouter();
   const [selectedRole, setSelectedRole] = useState<null | 'restaurant' | 'shelter'>(null);
-
-  const handleRoleSelection = (role: 'restaurant' | 'shelter') => {
-    setSelectedRole(role);
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = () => {
     if (selectedRole) {
@@ -25,7 +25,7 @@ const SelectRolePage = () => {
       <div className=" grid grid-cols-1 lg:grid-cols-2 w-full max-w-[75rem] gap-16">
         {/* Restaurant Option */}
         <div
-          onClick={() => handleRoleSelection('restaurant')}
+          onClick={() => setSelectedRole('restaurant')}
           className={`cursor-pointer flex flex-col gap-10 items-center border-2 p-6 rounded-lg ${
             selectedRole === 'restaurant' ? 'border-green-300' : 'border-gray-300'
           } hover:border-green-300 transition duration-200`}
@@ -41,7 +41,7 @@ const SelectRolePage = () => {
         
         {/* Shelter Option */}
         <div
-          onClick={() => handleRoleSelection('shelter')}
+          onClick={() => setSelectedRole('shelter')}
           className={`cursor-pointer  flex flex-col gap-10 items-center border-2 p-6 rounded-lg ${
             selectedRole === 'shelter' ? 'border-green-300' : 'border-gray-300'
           } hover:border-green-300 transition duration-200`}
