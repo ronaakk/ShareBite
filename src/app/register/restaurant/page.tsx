@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFormik } from 'formik';
 import { restaurantValidationSchema } from '@/utils/Yup';
-
-
+import { handleRoleSelection } from '@/utils/handleRoleSelection';
 
 const RegisterRestaurantPage = () => {
   const router = useRouter();

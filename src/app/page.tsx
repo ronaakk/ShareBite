@@ -1,15 +1,9 @@
 'use client';
 
 import Image from "next/image";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import  NavBar from "@/components/landingPage/NavBar"
 
 export default function Home() {
-  const { user, error, isLoading } = useUser();
-  console.log(user);
-
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>{error.message}</div>;
 
   return (
       
