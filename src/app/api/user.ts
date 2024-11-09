@@ -12,11 +12,22 @@ export default async function handler(
 
   try {
     switch (method) {
-      case "GET": {
-        const users = await User.find({});
-        res.status(200).json(users);
-        break;
-      }
+        case "GET": {
+            // If the query contains 'email', check if the user exists
+            if (req.query.email) {
+              const user = await User.findOne({ email: req.query.email });
+              if (user) {
+                return res.status(200).json({ exists: true });
+              } else {
+                return res.status(200).json({ exists: false });
+              }
+            }
+    
+            // Default behavior: Return all users (only if no email query is provided)
+            const users = await User.find({});
+            res.status(200).json(users);
+            break;
+          }
       case "POST": {
         const user = await User.create(req.body);
         res.status(201).json(user);
