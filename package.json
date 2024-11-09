@@ -13,6 +13,7 @@
     "@svgr/webpack": "^8.1.0",
     "auth0": "^4.12.0",
     "dotenv": "^16.4.5",
+    "formik": "^2.4.6",
     "mongodb": "^6.10.0",
     "mongoose": "^8.8.1",
     "next": "14.2.17",
