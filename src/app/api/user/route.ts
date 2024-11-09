@@ -1,37 +1,113 @@
-import { NextResponse } from 'next/server';
-import { mongooseConnect } from '@/lib/mongoose';
-import { User } from '@/models/User';
-import { getSession } from '@auth0/nextjs-auth0';
+import { mongooseConnect } from "@/lib/mongoose";
+import { User } from "@/models/User";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
+  await mongooseConnect();
+  
+  // Get the search params
+  const searchParams = request.nextUrl.searchParams;
+  const email = searchParams.get('email');
+
   try {
-    await mongooseConnect();
-    
-    const { searchParams } = new URL(request.url);
-    const email = searchParams.get('email');
-    
-    // Get the current session
-    const session = await getSession();
-    
-    // Check if user is authenticated
-    if (!session?.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     if (email) {
       const user = await User.findOne({ email });
       return NextResponse.json({ exists: !!user });
     }
 
-    // Only allow admin users to fetch all users
-    if (session.user.role !== 'admin') {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-    }
-
+    // Default: return all users if no email provided
     const users = await User.find({});
     return NextResponse.json(users);
   } catch (error) {
-    console.error('User API error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error("An error occurred:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  await mongooseConnect();
+  
+  try {
+    const body = await request.json();
+    const user = await User.create(body);
+    return NextResponse.json(user, { status: 201 });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PUT(request: NextRequest) {
+  await mongooseConnect();
+  
+  try {
+    const body = await request.json();
+    const searchParams = request.nextUrl.searchParams;
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json(
+        { error: "ID is required" },
+        { status: 400 }
+      );
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(id, body, {
+      new: true,
+    });
+
+    if (!updatedUser) {
+      return NextResponse.json(
+        { error: "User not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(updatedUser);
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  await mongooseConnect();
+  
+  try {
+    const searchParams = request.nextUrl.searchParams;
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json(
+        { error: "ID is required" },
+        { status: 400 }
+      );
+    }
+
+    const deletedUser = await User.findByIdAndDelete(id);
+
+    if (!deletedUser) {
+      return NextResponse.json(
+        { error: "User not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ message: "User deleted" });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

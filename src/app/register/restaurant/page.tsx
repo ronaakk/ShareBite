@@ -1,13 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFormik } from 'formik';
 import { restaurantValidationSchema } from '@/utils/Yup';
 import { handleRoleSelection } from '@/utils/handleRoleSelection';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const RegisterRestaurantPage = () => {
   const router = useRouter();
+
+  const { user, error, isLoading } = useUser();
+
+  useEffect(() => {
+    handleRoleSelection("Restaurant", user);
+  }, [])
 
   const formik = useFormik({
     initialValues: { name: '', address: '', contact: '' },

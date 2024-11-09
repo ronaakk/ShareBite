@@ -1,14 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFormik } from 'formik';
 import { shelterValidationSchema } from '@/utils/Yup';
+import handleRoleSelection from '@/utils/handleRoleSelection';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 
 
 const RegisterShelterPage = () => {
   const router = useRouter();
+
+  const { user, error, isLoading } = useUser();
+
+
+  useEffect(() => {
+    handleRoleSelection("Shelter", user);
+  }, [])
 
   const formik = useFormik({
     initialValues: { name: '', location: '', contact: '' },
