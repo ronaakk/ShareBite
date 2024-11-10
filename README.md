@@ -7,3 +7,21 @@ In the restaurant and fast food industry, a significant amount of food goes to w
 
 ## Video Demo
 [![sharebite](http://img.youtube.com/vi/ydsm26tX-_o/0.jpg)](https://www.youtube.com/watch?v=ydsm26tX-_o)
+
+## Challenges we ran into
+
+- **Authentication Issues**: While implementing a reliable auth proces, we encountered issues with fully logging users out. The session persisted across tabs, causing confusion when users expected a complete logout. After exploring Auth0 forums and documentation, we found a solution by modifying the handleLogout method for our auth routes.
+
+- **Redirect Logic**: Properly redirecting users based on their status in our database was another hurdle. We needed a way to determine if a user was already registered with a restaurant or shelter role, or if they required onboarding entirely. To address this, we implemented middleware on our authentication routes that ran a method to check if a user and their role exists in the database. If setup, they were routed directly to their dashboard. Otherwise, they were directed to an onboarding flow to select the establishment they represented. This middleware setup still needs to be worked on.
+
+- **Varying Time Zones**: Our team, spread across different time zones, managed to coordinate effectively, finding times to meet and discuss features so we could keep the project on track. We’re really proud of how we overcame these logistical challenges and worked together seamlessly despite the distance.
+
+## Technologies Used
+
+Next.js, React, Tailwind CSS, MongoDB, Auth0, GeoJSON, MapBox API
+
+## Team
+- Ronak
+- Harsha
+- Francis
+- Liz
