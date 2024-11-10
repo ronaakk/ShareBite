@@ -18,7 +18,7 @@ In the restaurant and fast food industry, a significant amount of food goes to w
 
 ## Technologies Used
 
-Next.js, React, Tailwind CSS, MongoDB, Auth0, GeoJSON, MapBox API
+Next.js, Typescript, React, Tailwind CSS, MongoDB, Auth0, GeoJSON, MapBox API
 
 ## Team
 - Ronak
