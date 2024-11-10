@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { mongooseConnect } from "../../lib/mongoose";
-import { Restaurant } from "../../models/Restaurant";
+import { mongooseConnect } from "../../../lib/mongoose";
+import { Restaurant } from "../../../models/Restaurant";
 
 export default async function handler(
   req: NextApiRequest,

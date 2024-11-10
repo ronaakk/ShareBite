@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { mongooseConnect } from "../../lib/mongoose";
-import { Shelter } from "../../models/Shelter";
+import { mongooseConnect } from "../../../lib/mongoose";
+import { Shelter } from "../../../models/Shelter";
 
 export default async function handler(
   req: NextApiRequest,
