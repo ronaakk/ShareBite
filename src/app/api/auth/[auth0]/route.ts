@@ -8,6 +8,6 @@ const logoutUrl = [
 
 export const GET = handleAuth({
   logout: handleLogout({ returnTo: logoutUrl.join('') }),
-  login: handleLogin({returnTo: '../../check-user'})
+  login: handleLogin({returnTo: '/select-role'})
 });
 

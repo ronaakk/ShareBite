@@ -1,10 +1,4 @@
 export const handleRoleSelection = async (role: string, user: any) => {
-  if (!user?.email) {
-    // TODO: change to sign up after hackathon
-    window.location.href = "/api/auth/login";
-    return null;
-  }
-
   try {
     const response = await fetch("/api/user", {
       method: "POST",
