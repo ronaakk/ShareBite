@@ -1,6 +1,6 @@
 'use client';
 
-import Button from "./Button";
+import Button from "../Button";
 
 function NavBar() {
   return (
@@ -9,7 +9,6 @@ function NavBar() {
         {/* TODO: Logo will go here */}
         <p
           className="
-            max-sm:hidden
             font-bold
             text-lg
             text-black

@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
         px-4 
         py-2 
         text-md 
-        rounded-full
+        rounded-2xl
         ${primary ? 'border-primary-green' : 'border-black'}
         ${primary ? 'bg-primary-green' : 'bg-white'}
         ${primary ? 'hover:bg-white' : 'hover:bg-black'}
