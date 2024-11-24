@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import  NavBar from "@/components/NavBar"
+import NavBar from "@/components/NavBar";
 
 export default function Home() {
 
@@ -9,17 +9,17 @@ export default function Home() {
       
     <div className="w-full container flex flex-col mx-auto text-center">
           <NavBar />
-          <h1 className="head_text">
+          <h1 className="my-5 text-lg font-extrabold leading-[1.15] text-black sm:text-6xl">
             Turning Leftovers into Lifelines
           </h1>
 
           {/* going to be hidden on screesn 768px and larger, (max-md targets breakpoints max-md and larger)
           <br className="max-md:hidden"/> */}
-          <span className="green_gradient text-2xl">
+          <span className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent text-2xl">
             Empowering restaurants and shelters to work together in providing food to those in need.
           </span>
 
-          <p className="desc">
+          <p className="mt-5 text-base text-gray-600 sm:text-xl w-full">
             Join us in reducing food waste and supporting your local community. Sign up today as a Restaurant or Shelter!
           </p>
 
@@ -53,7 +53,7 @@ export default function Home() {
                     </div>
                     <div className="rotate-90 lg:rotate-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="43" height="42" viewBox="0 0 43 42" fill="none">
-                            <g clip-path="url(#clip0_3346_6663)">
+                            <g clipPath="url(#clip0_3346_6663)">
                                 <path d="M16.9242 11.7425C16.2417 12.425 16.2417 13.5275 16.9242 14.21L23.7142 21L16.9242 27.79C16.2417 28.4725 16.2417 29.575 16.9242 30.2575C17.6067 30.94 18.7092 30.94 19.3917 30.2575L27.4242 22.225C28.1067 21.5425 28.1067 20.44 27.4242 19.7575L19.3917 11.725C18.7267 11.06 17.6067 11.06 16.9242 11.7425Z" fill="#A3AED0"></path>
                             </g>
                             <defs>
@@ -74,7 +74,7 @@ export default function Home() {
                     </div>
                     <div className="rotate-90 lg:rotate-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="43" height="42" viewBox="0 0 43 42" fill="none">
-                            <g clip-path="url(#clip0_3346_6663)">
+                            <g clipPath="url(#clip0_3346_6663)">
                                 <path d="M16.9242 11.7425C16.2417 12.425 16.2417 13.5275 16.9242 14.21L23.7142 21L16.9242 27.79C16.2417 28.4725 16.2417 29.575 16.9242 30.2575C17.6067 30.94 18.7092 30.94 19.3917 30.2575L27.4242 22.225C28.1067 21.5425 28.1067 20.44 27.4242 19.7575L19.3917 11.725C18.7267 11.06 17.6067 11.06 16.9242 11.7425Z" fill="#A3AED0"></path>
                             </g>
                             <defs>
