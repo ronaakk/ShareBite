@@ -35,24 +35,3 @@
   opacity: 0.4;
   filter: invert(1);
 }
-
-/* tailwind styles */
-.app {
-  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
-}
-
-.head_text {
-  @apply my-5 text-lg font-extrabold leading-[1.15] text-black sm:text-6xl;
-}
-
-.green_gradient {
-  @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
-}
-
-.desc {
-  @apply mt-5 text-base text-gray-600 sm:text-xl w-full;
-}
-
-.logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide hover:text-primary-green cursor-pointer;
-}
